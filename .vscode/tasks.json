@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build code",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+        "-g",
+        "ft_printf.h",
+        "ft_printf.c",
+        "ft_printf_utills.c",
+        "main.c"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
