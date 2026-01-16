@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: reldahli <reldahli@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/19 10:38:42 by reldahli          #+#    #+#             */
+/*   Updated: 2024/02/19 10:38:45 by reldahli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_putstr(char *str)
@@ -75,7 +87,7 @@ int	ft_putunbr(unsigned int n)
 	return (count);
 }
 
-int	ft_puthex(unsigned int n, int upper)
+int	ft_puthex(long unsigned int n, int upper)
 {
 	char	*charset;
 	char	c;
@@ -103,26 +115,19 @@ int	ft_puthex(unsigned int n, int upper)
 	return (count);
 }
 
-int	ft_putptr(unsigned long int n)
+int	ft_putptr(long long unsigned int n)
 {
-	char	c;
-	int		count;
+	int	count;
 
 	count = 0;
-	if (n > 15)
+	if (!n)
 	{
-		count += ft_putptr(n / 16);
-		count += ft_putptr(n % 16);
+		count = ft_putstr("(nil)");
+		return (count);
 	}
 	else
 	{
-		if (n < 10)
-			c = n + '0';
-		else
-			c = n + 'a' - 10;
-		if (ft_putchar(c) == -1)
-			return (-1);
-		count += 1;
+		count = ft_putstr("0x") + ft_puthex(n, 0);
+		return (count);
 	}
-	return (count);
 }

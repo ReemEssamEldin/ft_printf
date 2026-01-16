@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = ft_printf.c ft_printf_utills.c
+SRCS = ft_printf.c ft_printf_utils.c
 # output library name
 NAME = libftprintf.a
 HEADER = ft_printf.h

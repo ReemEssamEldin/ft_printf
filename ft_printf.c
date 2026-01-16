@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: reldahli <reldahli@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/19 11:00:58 by reldahli          #+#    #+#             */
+/*   Updated: 2024/02/19 11:01:00 by reldahli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_putchar(char c)
@@ -18,17 +30,13 @@ int	handle_flag(char symbol, va_list *args)
 	else if (symbol == 'u')
 		return (ft_putunbr(va_arg(*args, unsigned int)));
 	else if (symbol == 'x')
-		return (ft_puthex(va_arg(*args, unsigned int), 0));
+		return (ft_puthex((long unsigned int) va_arg(*args, unsigned int), 0));
 	else if (symbol == 'X')
-		return (ft_puthex(va_arg(*args, unsigned int), 1));
+		return (ft_puthex((long unsigned int) va_arg(*args, unsigned int), 1));
 	else if (symbol == '%')
 		return (ft_putchar('%'));
 	else if (symbol == 'p')
-	{
-		if (write(1, "0x", 2) == -1)
-			return (-1);
-		return (ft_putptr(va_arg(*args, unsigned long int)) + 2);
-	}
+		return (ft_putptr(va_arg(*args, long long unsigned int)));
 	return (-1);
 }
 
